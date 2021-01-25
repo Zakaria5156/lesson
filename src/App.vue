@@ -1,30 +1,40 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/shopping-cart">Checkout</router-link>
+  <div >
+    <header>
+            <!-- Main Menu Start -->
+            <div class="site-navigation main_menu menu-2" id="mainmenu-area">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            <img src="@/assets/images/logo-dark.png" alt="Edutim" class="img-fluid">
+                        </a>
+                        <!-- Toggler -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+                            aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="fa fa-bars"></span>
+                        </button>
+
+                        <!-- Collapse -->
+                        <div class="collapse navbar-collapse" id="navbarMenu">
+                            
+
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item ">
+                                  <router-link to="/" class="nav-link">Home</router-link>
+                                </li>
+                                <li class="nav-item ">
+                                   <router-link to="/shopping-cart" class="nav-link">Checkout</router-link>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+                </nav>
+            </div>
+        </header>
   </div>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
