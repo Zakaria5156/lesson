@@ -13,11 +13,8 @@
                             aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="fa fa-bars"></span>
                         </button>
-
                         <!-- Collapse -->
                         <div class="collapse navbar-collapse" id="navbarMenu">
-                            
-
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item ">
                                   <router-link to="/" class="nav-link">Home</router-link>

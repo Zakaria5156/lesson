@@ -5,7 +5,7 @@
         "location": "London",
         "price": 100,
         "spaces": 5,
-        "description": "learn the fundamental of mathematics"
+        "description": "learn  mathematics"
     },
     {
         "id": 2,
@@ -60,7 +60,53 @@
         "location": "Houston",
         "price": 80,
         "spaces": 5,
-        "description": "Learn how to speak French fluently"
+        "description": "Learn how to program efficiently"
+    },
+    {
+        "id": 8,
+        "image": "drumming.jpg",
+        "subject": "Drumming",
+        "location": "Texas",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to to play drums"
+    },
+    {
+        "id": 9,
+        "image": "baking.jpg",
+        "subject": "Baking",
+        "location": "Houston",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to bake cakes and pastries"
+    },
+    {
+        "id": 10,
+        "image": "music.jpg",
+        "subject": "Music",
+        "location": "Houston",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to play musical intruments"
+    },
+    {
+        "id": 11,
+        "image": "german.jpg",
+        "subject": "German",
+        "location": "Houston",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to speak German fluently"
+    },
+    {
+        "id": 12,
+        "image": "vue.jpg",
+        "subject": "Vue jS",
+        "location": "London",
+        "price": 150,
+        "spaces": 5,
+        "description": "Learn to creat SPA with Vue"
     }
+
 
 ]

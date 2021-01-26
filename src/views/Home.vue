@@ -35,35 +35,11 @@
         <div class="row">
           <div class="col-md-3 col-5">
             <h3>Sort</h3>
+            
           </div>
           <div class="col-md-9 col-7">
             <div class="row">
-              <div class="col-lg-4 col-md-6" v-for="lesson in lessons" :key="lesson.id">
-                <div class="course-block">
-                  <div class="course-img">
-                    <img :src="require(`@/assets/images/course/${lesson.image}`)" alt="" class="img-fluid">
-                  </div>
-
-                  <div class="course-content">
-                    <div class="course-price ">$50</div>
-
-                    <h5><a href="#">{{ lesson.subject }}</a></h5>
-                    <div class="rating">
-                      <i class="fa fa-map"></i>
-                      <span>{{ lesson.location }}</span>
-                    </div>
-                    <p>{{ lesson.description }}</p>
-
-                    <div class="course-footer d-lg-flex align-items-center justify-content-between">
-                      <div class="course-meta">
-                        <span class="course-student"><i class="bi bi-group"></i>{{ lesson.spaces }}</span>
-                      </div>
-
-                      <div class="buy-btn"><a href="#" class="btn btn-main-2 btn-small">Add to cart</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <lesson v-for="lesson in lessons" :key="lesson.id" :lesson="lesson" ></lesson>
             </div>
           </div>
         </div>
@@ -73,6 +49,7 @@
 </template>
 
 <script>
+import Lesson from '../components/Lesson.vue';
   // @ is an alias to /src
   import lessonsData from "../data/lessons.json";
 
@@ -84,7 +61,8 @@
       }
     },
     components: {
-
+      Lesson
     }
   }
+        Lesson
 </script>
