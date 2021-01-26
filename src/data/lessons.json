@@ -1,0 +1,66 @@
+[{
+        "id": 1,
+        "image": "math.jpg",
+        "subject": "Mathematics",
+        "location": "London",
+        "price": 100,
+        "spaces": 5,
+        "description": "learn the fundamental of mathematics"
+    },
+    {
+        "id": 2,
+        "image": "english.jpg",
+        "subject": "English",
+        "location": "London",
+        "price": 90,
+        "spaces": 5,
+        "description": "Learn how to speak fluently"
+    },
+    {
+        "id": 3,
+        "image": "science.jpg",
+        "subject": "Science",
+        "location": "Canada",
+        "price": 140,
+        "spaces": 5,
+        "description": "Latest scientific discoveries"
+    },
+    {
+        "id": 4,
+        "image": "french.jpg",
+        "subject": "French",
+        "location": "London",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to speak French fluently"
+    },
+
+    {
+        "id": 5,
+        "image": "graphic.jpg",
+        "subject": "Graphic design",
+        "location": "Amterdam",
+        "price": 98,
+        "spaces": 5,
+        "description": "Learn how to make wonderful designs"
+    },
+    {
+        "id": 6,
+        "image": "photography.jpg",
+        "subject": "Photography",
+        "location": "Wessex",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn photography professionally"
+    },
+    {
+        "id": 7,
+        "image": "programming.jpg",
+        "subject": "Programming",
+        "location": "Houston",
+        "price": 80,
+        "spaces": 5,
+        "description": "Learn how to speak French fluently"
+    }
+
+]
