@@ -1,7 +1,6 @@
 <template>
-  <div >
-    <header>
-            <!-- Main Menu Start -->
+    <div>
+        <header>
             <div class="site-navigation main_menu menu-2" id="mainmenu-area">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container-fluid">
@@ -17,20 +16,26 @@
                         <div class="collapse navbar-collapse" id="navbarMenu">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item ">
-                                  <router-link to="/" class="nav-link">Home</router-link>
+                                    <router-link to="/" class="nav-link">Home</router-link>
                                 </li>
                                 <li class="nav-item ">
-                                   <router-link to="/shopping-cart" class="nav-link">Checkout</router-link>
+                                    <router-link to="/shopping-cart" class="nav-link">Checkout</router-link>
                                 </li>
                             </ul>
-                        </div> 
+                        </div>
                     </div>
                 </nav>
             </div>
         </header>
-  </div>
-  <router-view/>
+    </div>
+    <router-view @add="updateCart" />
 </template>
+
+<script>
+export default {
+    
+}
+</script>
 
 <style>
 

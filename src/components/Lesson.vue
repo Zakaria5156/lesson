@@ -19,7 +19,7 @@
                         <span class="course-student"><i class="bi bi-group"></i>{{ lesson.spaces }}</span>
                     </div>
 
-                    <div class="buy-btn"><a href="#" class="btn btn-main-2 btn-small">Add to cart</a></div>
+                    <div class="buy-btn"><a @click="addToCart(lesson)" class="btn btn-main-2 text-white btn-small">Add to cart</a></div>
                 </div>
             </div>
         </div>
@@ -29,6 +29,20 @@
 <script>
     export default {
         props: ['lesson'],
+        emits: ['add'],
+        mounted () {
+           
+        },
+        methods: {
+            addToCart(lesson) {
+                if (lesson.spaces < 1) {
+                    alert('No space available');
+                    return false;
+                }
+                this.$emit('add', lesson)
+                lesson.spaces -= 1;
+            },
+        },
 
     }
 </script>
