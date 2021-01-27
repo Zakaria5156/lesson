@@ -46,6 +46,7 @@
             removeFromCart(lesson){
                 this.$store.state.cart.splice(this.$store.state.cart.indexOf(lesson), 1);
                 lesson.spaces += 1;
+                this.$emit('course-removed');
             },
 
             inCart(){

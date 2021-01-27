@@ -8,7 +8,7 @@
               </router-link>
 
           <div class="row">
-            <lesson v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
+            <lesson @course-removed="getTotal()" v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
             <section id="primary" class="content-area col-lg-12">
               <main id="main" class="site-main" role="main">
                 <article id="post-8" class="post-8 page type-page status-publish hentry">
@@ -101,7 +101,7 @@
       }
     },
     mounted() {
-      this.total = this.lessons.reduce((acc, item) => acc + item.price, 0);
+      this.getTotal();
     },
     methods: {
       filled() {
@@ -118,7 +118,13 @@
         this.name = '';
         this.email = '';
         this.phone = '';
-      }
+      },
+      getTotal(){
+        this.total = this.lessons.reduce((acc, item) => acc + item.price, 0);
+      },
+      updated () {
+        this.getTotal();
+      },
     },
     components: {
       Lesson
