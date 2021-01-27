@@ -1,4 +1,4 @@
-# lessons-app
+# Winston
 
 ## Project setup
 ```
