@@ -37,17 +37,29 @@
         <div class="row">
           <div class="col-md-3 col-5">
             <h3>Sort</h3>
-            <div class="form-group">
-              <input type="radio" id="subject" class="mr-2">
+            <div class="">
+              <input v-model="attribute" value="subject" type="radio" id="subject" class="mr-2">
               <label for="subject">Subject</label>
+            </div>
+            <div class="">
+              <input v-model="attribute" value="location" type="radio" id="location" class="mr-2">
+              <label for="location">Location</label>
+            </div>
+            <div class="">
+              <input v-model="attribute" value="price" type="radio" id="price" class="mr-2">
+              <label for="price">Price</label>
+            </div>
+             <div class="">
+              <input v-model="attribute" value="spaces" type="radio" id="spaces" class="mr-2">
+              <label for="spaces">Availability</label>
             </div>
             <hr>
             <div class="form-grou">
-              <input type="radio" id="ascending" name="order" class="mr-2">
+              <input type="radio" v-model="asc" id="ascending" value="true" class="mr-2">
               <label for="ascending">Ascending</label>
             </div>
             <div class="form-grou">
-              <input type="radio" id="descending" name="order" class="mr-2">
+              <input type="radio" v-model="asc" id="descending" value="false" class="mr-2">
               <label for="descending">Descending</label>
             </div>
 
@@ -71,14 +83,76 @@
     name: 'Home',
     data() {
       return {
-        lessons: lessonsData,
+        lessons: [],
+        attribute: 'subject',
+        asc: true,
       }
-    },
-    mounted() {
-
     },
     components: {
       Lesson
+    },
+    mounted() {
+      this.lessons = lessonsData;
+    },
+
+    methods: {
+      sortNow() {
+
+        /* Sort subject */
+        if (this.attribute == 'subject') {
+          this.lessons.sort(function (a, b) {
+            let aa = a.subject.toLowerCase(),
+              bb = b.subject.toLowerCase();
+            if (aa < bb) {
+              return -1;
+            }
+            if (aa > bb) {
+              return 1
+            }
+            return 0
+          })
+        }
+
+        //Sort Location
+        if (this.attribute == 'location') {
+          this.lessons.sort(function (a, b) {
+            let aa = a.location.toLowerCase(),
+              bb = b.location.toLowerCase();
+            if (aa < bb) {
+              return -1;
+            }
+            if (aa > bb) {
+              return 1
+            }
+            return 0
+          })
+        }
+
+
+        //Sort Price
+        if (this.attribute == 'price') {
+          this.lessons.sort(function (a, b) {
+            return a.price - b.price
+          })
+        }
+
+        //Sort Price
+        if (this.attribute == 'spaces') {
+          this.lessons.sort(function (a, b) {
+            return a.spaces - b.spaces
+          })
+        }
+
+        if (this.asc == 'false') {
+          this.lessons.reverse();
+        }
+
+      }
+    },
+
+
+    updated () {
+      this.sortNow()
     },
   }
 </script>
