@@ -44,7 +44,7 @@
                             <table class="shop_table woocommerce-checkout-review-order-table">
                               <thead>
                                 <tr>
-                                  <th class="product-name">Lesson</th>
+                                  <th class="product-name">Lessons</th>
                                   <th class="product-total">Price</th>
                                 </tr>
                               </thead>
