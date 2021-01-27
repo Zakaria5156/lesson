@@ -10,5 +10,5 @@ cd dist
 #git init
 git add -A
 git commit -m 'deploy'
-git push origin git@github.com:Zakaria5156/lessons-app.git master:gh-pages
+git push git@github.com:Zakaria5156/lessons-app.git master:gh-pages
 cd -
