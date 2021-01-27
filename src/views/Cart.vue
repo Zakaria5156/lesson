@@ -59,7 +59,7 @@
                               <tfoot>
 
                                 <tr class="order-total">
-                                  <th>Total</th>
+                                  <th>Total Price</th>
                                   <td><strong><span class="woocommerce-Price-amount amount"><span
                                           class="woocommerce-Price-currencySymbol">€</span>{{ total }}</span></strong>
                                   </td>
@@ -102,7 +102,6 @@
     },
     mounted() {
       this.total = this.lessons.reduce((acc, item) => acc + item.price, 0);
-      console.log(this.filled())
     },
     methods: {
       filled() {

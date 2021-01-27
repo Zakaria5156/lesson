@@ -8,7 +8,8 @@ cd dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 #git init
-git add -A
-git commit -m 'new deploy'
-git push -f origin master:gh-pages
+git add dist
+git commit -m 'Updates'
+#git push -f origin master:gh-pages
+git subtree push --prefix dist origin gh-pages
 cd -
