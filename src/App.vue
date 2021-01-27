@@ -28,7 +28,7 @@
             </div>
         </header>
     </div>
-    <router-view @add="updateCart" />
+    <router-view/>
 </template>
 
 <script>

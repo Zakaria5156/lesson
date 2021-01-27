@@ -15,11 +15,12 @@
                 <p>{{ lesson.description }}</p>
 
                 <div class="course-footer d-lg-flex align-items-center justify-content-between">
-                    <div class="course-meta">
+                    <div class="course-meta" >
                         <span class="course-student"><i class="bi bi-group"></i>{{ lesson.spaces }}</span>
                     </div>
 
-                    <div class="buy-btn"><a @click="addToCart(lesson)" class="btn btn-main-2 text-white btn-small">Add to cart</a></div>
+                    <div v-if="inCart()" class="buy-btn"><a @click="removeFromCart(lesson)" class="btn btn-main text-white btn-small">Remove</a></div>
+                    <div v-else class="buy-btn"><a @click="addToCart(lesson)" class="btn btn-main-2 text-white btn-small">Add to cart</a></div>
                 </div>
             </div>
         </div>
@@ -29,7 +30,6 @@
 <script>
     export default {
         props: ['lesson'],
-        emits: ['add'],
         mounted () {
            
         },
@@ -39,9 +39,18 @@
                     alert('No space available');
                     return false;
                 }
-                this.$emit('add', lesson)
+                this.$store.commit('addLesson', this.lesson);
                 lesson.spaces -= 1;
             },
+
+            removeFromCart(lesson){
+                this.$store.state.cart.splice(this.$store.state.cart.indexOf(lesson), 1);
+                lesson.spaces += 1;
+            },
+
+            inCart(){
+                return this.$store.state.cart.includes(this.lesson);
+            }
         },
 
     }

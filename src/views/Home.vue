@@ -27,19 +27,34 @@
           </div>
 
           <div class="col-lg-6">
-            <div class="course-btn text-lg-right"><a href="#" class="btn btn-main"><i class="fa fa-store mr-2"></i>All
-                Lessons</a></div>
+            <div v-if="$store.state.cart.length > 0" class="course-btn text-lg-right">
+              <router-link to="/shopping-cart" class="btn btn-main"><i class="fa fa-store mr-2"></i>Checkout
+              </router-link>
+            </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-3 col-5">
             <h3>Sort</h3>
-            
+            <div class="form-group">
+              <input type="radio" id="subject" class="mr-2">
+              <label for="subject">Subject</label>
+            </div>
+            <hr>
+            <div class="form-grou">
+              <input type="radio" id="ascending" name="order" class="mr-2">
+              <label for="ascending">Ascending</label>
+            </div>
+            <div class="form-grou">
+              <input type="radio" id="descending" name="order" class="mr-2">
+              <label for="descending">Descending</label>
+            </div>
+
           </div>
           <div class="col-md-9 col-7">
-            <div class="row" >
-              <lesson @add="updateCart" v-for="lesson in lessons" :key="lesson.id" :lesson="lesson" ></lesson>
+            <div class="row">
+              <lesson v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
             </div>
           </div>
         </div>
@@ -49,29 +64,21 @@
 </template>
 
 <script>
-import Lesson from '../components/Lesson.vue';
-  // @ is an alias to /src
+  import Lesson from '../components/Lesson.vue';
   import lessonsData from "../data/lessons.json";
 
   export default {
     name: 'Home',
     data() {
       return {
-        lessons: lessonsData
+        lessons: lessonsData,
       }
     },
-    mounted () {
+    mounted() {
+
     },
     components: {
       Lesson
     },
-    methods: {
-      updateCart(e) {
-        //alert('we');
-        localStorage.cart = e.id;
-        console.log(localStorage.cart)
-      }
-    },
   }
-        Lesson
 </script>
