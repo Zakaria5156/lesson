@@ -65,8 +65,8 @@
 
           </div>
           <div class="col-md-9 col-7">
-            <div class="row">
-              <lesson v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
+            <div class="row" v-if="!loading">
+              <lesson  v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
 
 <script>
   import Lesson from '../components/Lesson.vue';
-  import lessonsData from "../data/lessons.json";
+  //import lessonsData from "../data/lessons.json";
 
   export default {
     name: 'Home',
@@ -93,34 +93,17 @@
       Lesson
     },
     mounted() {
-      this.lessons = lessonsData;
-
       this.fetchLessons();
     },
 
     methods: {
       fetchLessons() {
         this.loading = true;
-        // I prefer to use fetch
-        // you can use use axios as an alternative
-        return fetch('https://my-lessons-app.herokuapp.com/lessons', {
-            method: 'get',
-            headers: {
-              'content-type': 'application/json'
-            }
-          })
-          .then(res => {
-            console.log(res);
-            // a non-200 response code
-            if (!res.ok) {
-              // create error instance with HTTP status text
-             /*  const error = new Error(res.statusText);
-              error.json = res.json();
-              throw error; */
-
-            }
-
-            return res.json();
+        fetch("https://my-lessons-app.herokuapp.com/lessons")
+          .then(response => response.json())
+          .then(data => {
+            this.loading = false;
+            this.lessons = data.data;
           });
       },
 
