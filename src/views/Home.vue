@@ -36,7 +36,7 @@
 
         <div class="row">
           <div class="col-md-3 col-5">
-            <h3>Sort</h3>
+            <h3>Sort Lessons</h3>
             <div class="">
               <input v-model="attribute" value="subject" type="radio" id="subject" class="mr-2">
               <label for="subject">Subject</label>
@@ -49,7 +49,7 @@
               <input v-model="attribute" value="price" type="radio" id="price" class="mr-2">
               <label for="price">Price</label>
             </div>
-             <div class="">
+            <div class="">
               <input v-model="attribute" value="spaces" type="radio" id="spaces" class="mr-2">
               <label for="spaces">Availability</label>
             </div>
@@ -86,6 +86,7 @@
         lessons: [],
         attribute: 'subject',
         asc: true,
+        loading: false,
       }
     },
     components: {
@@ -93,11 +94,37 @@
     },
     mounted() {
       this.lessons = lessonsData;
+
+      this.fetchLessons();
     },
 
     methods: {
-      sortNow() {
+      fetchLessons() {
+        this.loading = true;
+        // I prefer to use fetch
+        // you can use use axios as an alternative
+        return fetch('https://my-lessons-app.herokuapp.com/lessons', {
+            method: 'get',
+            headers: {
+              'content-type': 'application/json'
+            }
+          })
+          .then(res => {
+            console.log(res);
+            // a non-200 response code
+            if (!res.ok) {
+              // create error instance with HTTP status text
+             /*  const error = new Error(res.statusText);
+              error.json = res.json();
+              throw error; */
 
+            }
+
+            return res.json();
+          });
+      },
+
+      sortNow() {
         /* Sort subject */
         if (this.attribute == 'subject') {
           this.lessons.sort(function (a, b) {
@@ -151,7 +178,7 @@
     },
 
 
-    updated () {
+    updated() {
       this.sortNow()
     },
   }
