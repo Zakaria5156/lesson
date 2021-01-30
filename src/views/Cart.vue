@@ -117,7 +117,7 @@
           phone : this.phone,
           total : this.total,
         }
-        fetch("http://127.0.0.1:8000/order", {
+        fetch("https://my-lessons-app.herokuapp.com/order", {
             method: 'post',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)

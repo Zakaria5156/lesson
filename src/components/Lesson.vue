@@ -47,7 +47,7 @@
                     id: this.lesson.id,
                     spaces: this.lesson.spaces,
                 }
-                fetch("http://127.0.0.1:8000/update-lesson", {
+                fetch("https://my-lessons-app.herokuapp.com/update-lesson", {
                         method: 'put',
                         headers: {
                             "Content-Type": "application/json"
@@ -64,7 +64,7 @@
                     id: this.lesson.id,
                     spaces: this.lesson.spaces,
                 }
-                fetch("http://127.0.0.1:8000/update-lesson", {
+                fetch("https://my-lessons-app.herokuapp.com/update-lesson", {
                         method: 'put',
                         headers: {
                             "Content-Type": "application/json"
