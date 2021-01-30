@@ -15,12 +15,14 @@
                 <p>{{ lesson.description }}</p>
 
                 <div class="course-footer d-lg-flex align-items-center justify-content-between">
-                    <div class="course-meta" >
+                    <div class="course-meta">
                         <span class="course-student"><i class="bi bi-group"></i>{{ lesson.spaces }}</span>
                     </div>
 
-                    <div v-if="inCart()" class="buy-btn"><a @click="removeFromCart(lesson)" class="btn btn-main text-white btn-small">Remove</a></div>
-                    <div v-else class="buy-btn"><a @click="addToCart(lesson)" class="btn btn-main-2 text-white btn-small">Add to cart</a></div>
+                    <div v-if="inCart()" class="buy-btn"><a @click="removeFromCart(lesson)"
+                            class="btn btn-main text-white btn-small">Remove</a></div>
+                    <div v-else class="buy-btn"><a @click="addToCart(lesson)"
+                            class="btn btn-main-2 text-white btn-small">Add to cart</a></div>
                 </div>
             </div>
         </div>
@@ -30,8 +32,8 @@
 <script>
     export default {
         props: ['lesson'],
-        mounted () {
-           
+        mounted() {
+
         },
         methods: {
             addToCart(lesson) {
@@ -41,15 +43,37 @@
                 }
                 this.$store.commit('addLesson', this.lesson);
                 lesson.spaces -= 1;
+                let data = {
+                    id: this.lesson.id,
+                    spaces: this.lesson.spaces,
+                }
+                fetch("http://127.0.0.1:8000/update-lesson", {
+                        method: 'put',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
             },
 
-            removeFromCart(lesson){
+            removeFromCart(lesson) {
                 this.$store.state.cart.splice(this.$store.state.cart.indexOf(lesson), 1);
                 lesson.spaces += 1;
                 this.$emit('course-removed');
+                let data = {
+                    id: this.lesson.id,
+                    spaces: this.lesson.spaces,
+                }
+                fetch("http://127.0.0.1:8000/update-lesson", {
+                        method: 'put',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
             },
 
-            inCart(){
+            inCart() {
                 return this.$store.state.cart.includes(this.lesson);
             }
         },

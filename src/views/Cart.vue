@@ -4,8 +4,8 @@
 
       <section class="space-3">
         <div class="container">
-            <router-link to="/" class="btn btn-main"><i class="fa fa-home "></i> Home
-              </router-link>
+          <router-link to="/" class="btn btn-main"><i class="fa fa-home "></i> Home
+          </router-link>
 
           <div class="row">
             <lesson @course-removed="getTotal()" v-for="lesson in lessons" :key="lesson.id" :lesson="lesson"></lesson>
@@ -110,19 +110,35 @@
         }
         return true
       },
-      checkout(){
-        alert('Your order has been submitted successfully')
+      checkout() {
+        let data = {
+          name : this.name,
+          email : this.email,
+          phone : this.phone,
+          total : this.total,
+        }
+        fetch("http://127.0.0.1:8000/order", {
+            method: 'post',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(res => {
+            console.log(res)
+            alert('Your order has been submitted successfully')
+          });
+
         this.$store.commit('emptyCart');
-        this.lessons = [];
+        //.lessons = [];
         this.total = 0;
         this.name = '';
         this.email = '';
         this.phone = '';
       },
-      getTotal(){
+      getTotal() {
         this.total = this.lessons.reduce((acc, item) => acc + item.price, 0);
       },
-      updated () {
+      updated() {
         this.getTotal();
       },
     },
